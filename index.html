@@ -451,7 +451,7 @@ function setView(v){['live','hour','day'].forEach(x=>{document.getElementById('b
 function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
 
 setView('live');
-setTimeout(()=>{if(xData.length===0)toggleSim();},2000);
+toggleSim();
 </script>
 </body>
 </html>
