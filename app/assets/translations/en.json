@@ -1,1 +1,11 @@
-
+{
+  "app_name": "NeuroGrip",
+  "login": "Login",
+  "phone_number": "Phone Number",
+  "send_otp": "Send OTP",
+  "verify_otp": "Verify OTP",
+  "dashboard": "Dashboard",
+  "severity": "Tremor Severity",
+  "generate_report": "Generate AI Report",
+  "blockchain": "Blockchain Records"
+}
