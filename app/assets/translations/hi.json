@@ -1,1 +1,11 @@
-
+{
+  "app_name": "न्यूरोग्रिप",
+  "login": "लॉगिन",
+  "phone_number": "फ़ोन नंबर",
+  "send_otp": "OTP भेजें",
+  "verify_otp": "OTP सत्यापित करें",
+  "dashboard": "डैशबोर्ड",
+  "severity": "कंपन गंभीरता",
+  "generate_report": "AI रिपोर्ट बनाएं",
+  "blockchain": "ब्लॉकचेन रिकॉर्ड"
+}
