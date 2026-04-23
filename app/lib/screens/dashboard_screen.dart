@@ -61,6 +61,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
         backgroundColor: const Color(0xFF0A0E1A),
         actions: [
           IconButton(
+  icon: const Icon(Icons.favorite, color: Colors.pink),
+  onPressed: () => Navigator.push(context,
+      MaterialPageRoute(builder: (_) => const CompanionScreen())),
+),
+          IconButton(
             icon: const Icon(Icons.description, color: Color(0xFF00BCD4)),
             onPressed: () => Navigator.push(context,
                 MaterialPageRoute(builder: (_) => const ReportScreen())),
