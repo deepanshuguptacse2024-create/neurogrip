@@ -1,0 +1,10 @@
+{
+  "app_name": "নিউরোগ্রিপ",
+  "login": "লগইন",
+  "phone_number": "ফোন নম্বর",
+  "send_otp": "OTP পাঠান",
+  "dashboard": "ড্যাশবোর্ড",
+  "severity": "কম্পন তীব্রতা",
+  "generate_report": "AI রিপোর্ট তৈরি করুন",
+  "blockchain": "ব্লকচেইন রেকর্ড"
+}
