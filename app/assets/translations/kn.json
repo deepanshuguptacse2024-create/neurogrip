@@ -1,0 +1,10 @@
+{
+  "app_name": "ನ್ಯೂರೋಗ್ರಿಪ್",
+  "login": "ಲಾಗಿನ್",
+  "phone_number": "ಫೋನ್ ಸಂಖ್ಯೆ",
+  "send_otp": "OTP ಕಳುಹಿಸಿ",
+  "dashboard": "ಡ್ಯಾಶ್‌ಬೋರ್ಡ್",
+  "severity": "ನಡುಕ ತೀವ್ರತೆ",
+  "generate_report": "AI ವರದಿ ರಚಿಸಿ",
+  "blockchain": "ಬ್ಲಾಕ್‌ಚೈನ್ ದಾಖಲೆಗಳು"
+}
