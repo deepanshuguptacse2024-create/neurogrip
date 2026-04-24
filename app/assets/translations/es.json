@@ -1,0 +1,10 @@
+{
+  "app_name": "NeuroGrip",
+  "login": "Iniciar sesión",
+  "phone_number": "Número de teléfono",
+  "send_otp": "Enviar OTP",
+  "dashboard": "Panel de control",
+  "severity": "Severidad del temblor",
+  "generate_report": "Generar informe IA",
+  "blockchain": "Registros Blockchain"
+}
