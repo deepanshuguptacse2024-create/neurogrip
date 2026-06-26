@@ -119,7 +119,6 @@ footer{border-top:1px solid var(--border);padding:20px 32px;text-align:center;co
   </div>
   <div class="header-right">
     <div class="live-badge"><div class="live-dot"></div>LIVE MONITORING</div>
-    <button class="btn btn-outline" onclick="toggleDevice()" id="device-btn">⚡ Device ON</button>
 <button class="btn btn-primary" onclick="openProfile()" style="margin-left:8px;">👤 Edit Profile</button>
     
     <button class="btn btn-primary" onclick="exportPDF()">📄 PDF Report</button>
@@ -440,19 +439,7 @@ function setView(v){['live','hour','day'].forEach(x=>{document.getElementById('b
 function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
 
 setView('live');
-  let deviceOn = true;
-function toggleDevice(){
-  deviceOn = !deviceOn;
-  const btn = document.getElementById('device-btn');
-  btn.textContent = deviceOn ? '⚡ Device ON' : '⭘ Device OFF';
-  btn.style.background = deviceOn ? '' : '#ff4444';
-  fetch(`${FIREBASE_URL}/device/status.json`, {
-    method: 'PUT',
-    body: JSON.stringify(deviceOn ? 'on' : 'off')
-  });
-  showToast(deviceOn ? '✅ Device activated!' : '🔴 Device deactivated!');
-}
-
+  
 function openProfile(){
   const name = prompt('Patient Name:', localStorage.getItem('patient_name')||'Ramesh Kumar');
   const age = prompt('Age:', localStorage.getItem('patient_age')||'67');
