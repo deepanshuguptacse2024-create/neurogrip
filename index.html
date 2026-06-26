@@ -444,6 +444,7 @@ function openProfile(){
   const name = prompt('Patient Name:', localStorage.getItem('patient_name')||'Ramesh Kumar');
   const age = prompt('Age:', localStorage.getItem('patient_age')||'67');
   const stage = prompt('Parkinson Stage (1-5):', localStorage.getItem('patient_stage')||'2');
+  const gender = prompt('Gender (Male/Female):', localStorage.getItem('patient_gender')||'Male');
   
   if(name && age && stage && gender){
     localStorage.setItem('patient_name', name);
