@@ -444,12 +444,14 @@ function openProfile(){
   const name = prompt('Patient Name:', localStorage.getItem('patient_name')||'Ramesh Kumar');
   const age = prompt('Age:', localStorage.getItem('patient_age')||'67');
   const stage = prompt('Parkinson Stage (1-5):', localStorage.getItem('patient_stage')||'2');
-  if(name && age && stage){
+  
+  if(name && age && stage && gender){
     localStorage.setItem('patient_name', name);
     localStorage.setItem('patient_age', age);
     localStorage.setItem('patient_stage', stage);
+    localStorage.setItem('patient_gender', gender);
     document.querySelector('.patient-name').textContent = name;
-    document.querySelector('.patient-meta').textContent = `Age ${age} · Male · Meerut, UP · Patient ID: NG-2026-001`;
+    document.querySelector('.patient-meta').textContent = `Age ${age} · ${gender} · Meerut, UP · Patient ID: NG-2026-001`;
     document.querySelector('.tags .tag:first-child').textContent = `Parkinson's Stage ${stage}`;
     showToast('✅ Profile updated!');
   }
@@ -460,7 +462,7 @@ function openProfile(){
   const age = localStorage.getItem('patient_age');
   const stage = localStorage.getItem('patient_stage');
   if(name) document.querySelector('.patient-name').textContent = name;
-  if(age) document.querySelector('.patient-meta').textContent = `Age ${age} · Male · Meerut, UP · Patient ID: NG-2026-001`;
+  if(age) document.querySelector('.patient-meta').textContent = `Age ${age} · ${localStorage.getItem('patient_gender')||'Male'} · Meerut, UP · Patient ID: NG-2026-001`;
   if(stage) document.querySelector('.tags .tag:first-child').textContent = `Parkinson's Stage ${stage}`;
 });
 </script>
