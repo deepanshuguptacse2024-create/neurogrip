@@ -282,11 +282,11 @@ footer{border-top:1px solid var(--border);padding:20px 32px;text-align:center;co
 </div>
 
 <div id="toast" class="toast"></div>
-<footer>NeuroGrip v2.0 · Team TechNova · MIET Meerut · Google Solution Challenge 2026 · SDG #3 Good Health & Well-being</footer>
+<footer>NeuroGrip v2.0 · Team TechNova · MIET Meerut · Devgethering 2026 · SDG #3 Good Health & Well-being</footer>
 
 <script>
 const FIREBASE_URL = "https://neurogrip-app-default-rtdb.asia-southeast1.firebasedatabase.app";
-let GEMINI_KEY ="AIzaSyDkAIvawHFLdvyttuP4F6wCv-SnYeFqRIU";
+let GEMINI_KEY ="AIzaSyAn71FW1a27aSGemlBEYzFnJ-IoZWLAA0M";
 if(GEMINI_KEY) document.getElementById('api-banner').style.display='none';
 
 function saveKey(){
@@ -438,7 +438,6 @@ function setView(v){['live','hour','day'].forEach(x=>{document.getElementById('b
 function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
 
 setView('live');
-setTimeout(()=>{if(xData.length===0)toggleSim();},2000);
 </script>
 </body>
 </html>
