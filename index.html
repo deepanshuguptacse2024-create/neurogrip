@@ -446,6 +446,10 @@ function toggleDevice(){
   const btn = document.getElementById('device-btn');
   btn.textContent = deviceOn ? '⚡ Device ON' : '⭘ Device OFF';
   btn.style.background = deviceOn ? '' : '#ff4444';
+  fetch(`${FIREBASE_URL}/device/status.json`, {
+    method: 'PUT',
+    body: JSON.stringify(deviceOn ? 'on' : 'off')
+  });
   showToast(deviceOn ? '✅ Device activated!' : '🔴 Device deactivated!');
 }
 
