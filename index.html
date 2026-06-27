@@ -122,6 +122,7 @@ footer{border-top:1px solid var(--border);padding:20px 32px;text-align:center;co
 <button class="btn btn-primary" onclick="openProfile()" style="margin-left:8px;">👤 Edit Profile</button>
     
     <button class="btn btn-primary" onclick="exportPDF()">📄 PDF Report</button>
+    <button onclick="togglePredict()" id="predict-btn" class="btn btn-outline">🧠 Predict: ON</button>
   </div>
 </header>
 
@@ -466,6 +467,14 @@ function openProfile(){
   if(age) document.querySelector('.patient-meta').textContent = `Age ${age} · ${localStorage.getItem('patient_gender')||'Male'} · Meerut, UP · Patient ID: NG-2026-001`;
   if(stage) document.querySelector('.tags .tag:first-child').textContent = `Parkinson's Stage ${stage}`;
 });
+  let predictOn = true;
+function togglePredict(){
+  predictOn = !predictOn;
+  const btn = document.getElementById('predict-btn');
+  btn.textContent = predictOn ? '🧠 Predict: ON' : '🧠 Predict: OFF';
+  btn.style.background = predictOn ? '#7c3aed' : '#444';
+  showToast(predictOn ? '🧠 Predictive mode ON!' : '⭘ Predictive mode OFF');
+}
 </script>
 </body>
 </html>
