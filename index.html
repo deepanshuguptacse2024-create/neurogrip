@@ -389,9 +389,15 @@ async function generateReport(){
   btn.innerHTML='<span class="spinner"></span>Generating...';btn.disabled=true;  
   const avg=historyData.length?Math.round(historyData.reduce((a,b)=>a+b.score,0)/historyData.length):50;
   const px=xData[xData.length-1]||0,py=yData[yData.length-1]||0,pz=zData[zData.length-1]||0;
+  const trend = xData.length > 5 ? 
+  (xData[xData.length-1] - xData[xData.length-6]) : 0;   
+const trendText = trend > 1 ? '📈 Tremor increasing - high risk' : 
+                  trend < -1 ? '📉 Tremor decreasing - improving' : 
+                  '➡️ Tremor stable';
 const prompt = `You are a clinical AI assistant for Parkinson's disease monitoring.
 Patient: ${localStorage.getItem('patient_name')||'Ramesh Kumar'}, Age ${localStorage.getItem('patient_age')||'67'}, Gender: ${localStorage.getItem('patient_gender')||'Male'}, Parkinson Stage ${localStorage.getItem('patient_stage')||'2'}, on Levodopa 100mg.
 Tremor data - X:${px}, Y:${py}, Z:${pz}, Stability:${document.getElementById('ring-num').textContent}/100.
+Predictive Trend: ${trendText}
 Generate a concise doctor report (150 words) covering: 1) Tremor severity 2) Trend analysis 3) Medication recommendations`;
   try{
     const res=await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent?key=${GEMINI_KEY}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contents:[{parts:[{text:prompt}]}]})});
