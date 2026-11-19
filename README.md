@@ -15,7 +15,7 @@
 </p>
 
 <p align="center">
-  <img src="images/neurogrip.png" alt="NeuroGrip prototype" width="620"/>
+  <img src="neurogrip-device.png" alt="NeuroGrip prototype" width="620"/>
 </p>
 
 <p align="center">
@@ -75,7 +75,7 @@ People with hand tremors struggle with everyday tasks like eating, drinking and 
 ## 🔁 How It Works
 
 <p align="center">
-  <img src="images/how-it-works.jpg" alt="How NeuroGrip works" width="850"/>
+  <img src="how-it-works.jpg.jpeg" alt="How NeuroGrip works" width="850"/>
 </p>
 
 1. **Hand trembles or shakes**
@@ -87,11 +87,11 @@ People with hand tremors struggle with everyday tasks like eating, drinking and 
 ## 🧪 Methodology
 
 <p align="center">
-  <img src="images/methodology-1-sense-process-correct.jpg" alt="Sense, Process, Correct" width="850"/>
+  <img src="methodology-1-sense-process-correct.jpg.jpeg" alt="Sense, Process, Correct" width="850"/>
 </p>
 
 <p align="center">
-  <img src="images/methodology-2-loop-transmit-report.jpg" alt="Loop, Transmit and monitor, Analyze and report" width="850"/>
+  <img src="methodology-2-loop-transmit-report.jpg.jpeg" alt="Loop, Transmit and monitor, Analyze and report" width="850"/>
 </p>
 
 | Step | Stage | What happens |
@@ -106,7 +106,7 @@ People with hand tremors struggle with everyday tasks like eating, drinking and 
 ## 🏗️ System Architecture
 
 <p align="center">
-  <img src="images/prototype-working.png" alt="NeuroGrip system architecture" width="900"/>
+  <img src="prototype-working.png" alt="NeuroGrip system architecture" width="900"/>
 </p>
 
 ```mermaid
@@ -124,17 +124,17 @@ flowchart TD
 ```
 
 <p align="center">
-  <img src="images/hardware-layers.jpg" alt="Hardware, control and AI/cloud layers" width="800"/>
+  <img src="hardware-layers.jpg" alt="Hardware, control and AI/cloud layers" width="800"/>
 </p>
 
 ## 🔩 Inner Structure & Gimbal Mechanism
 
 <p align="center">
-  <img src="images/inner-structure.jpg" alt="Inner structure, side cross-section" width="850"/>
+  <img src="inner-structure.jpg.jpeg" alt="Inner structure, side cross-section" width="850"/>
 </p>
 
 <p align="center">
-  <img src="images/gimbal-mechanism.jpg" alt="2-axis gimbal mechanism" width="750"/>
+  <img src="gimbal-mechanism.jpg" alt="2-axis gimbal mechanism" width="750"/>
 </p>
 
 | Axis | Servo | Motion |
@@ -147,7 +147,7 @@ Both axes work together to keep the spoon bowl **always horizontal**.
 ## 🔀 Data Flow
 
 <p align="center">
-  <img src="images/data-flow.jpg" alt="NeuroGrip data flow" width="900"/>
+  <img src="data-flow.jpg.jpeg" alt="NeuroGrip data flow" width="900"/>
 </p>
 
 `MPU6050 (sensor data)` → `ESP32 (processing)` → `Wi-Fi (data transfer)` → `React dashboard (live monitoring)` → `Gemini AI (analysis & report)` → `Doctor (medical insights)`
@@ -171,7 +171,7 @@ Both axes work together to keep the spoon bowl **always horizontal**.
 ### Wiring Diagram
 
 <p align="center">
-  <img src="images/wiring-diagram.png" alt="NeuroGrip wiring diagram" width="850"/>
+  <img src="wiring-diagram.png" alt="NeuroGrip wiring diagram" width="850"/>
 </p>
 
 | From | To (ESP32) |
@@ -188,8 +188,8 @@ Both axes work together to keep the spoon bowl **always horizontal**.
 ## 📊 Live Dashboard
 
 <p align="center">
-  <img src="images/dashboard1.png" alt="Live monitoring dashboard" width="48%"/>
-  <img src="images/dashboard2.png" alt="Gemini AI doctor report" width="48%"/>
+  <img src="dashboard1.png" alt="Live monitoring dashboard" width="48%"/>
+  <img src="dashboard2.png" alt="Gemini AI doctor report" width="48%"/>
 </p>
 
 - Live tremor waveform and tremor intensity
@@ -227,7 +227,7 @@ cd neurogrip
 neurogrip/
 ├── arduino/        # ESP32 firmware
 ├── app/            # Web dashboard source
-├── images/         # Photos, diagrams, screenshots
+├── *.png / *.jpeg  # Photos, diagrams, screenshots
 ├── index.html      # Dashboard entry page
 └── README.md
 ```
@@ -261,7 +261,7 @@ Lightweight build · balanced weight · comfortable grip · easy operation for s
 ## 🏆 Achievements
 
 <p align="center">
-  <img src="images/uprise-2026-runner-u.jpg" alt="Team NeuroGrip with trophy" width="520"/>
+  <img src="uprise-2026-runner-u.jpeg" alt="Team NeuroGrip with trophy" width="520"/>
 </p>
 
 - 🥈 **2nd Position, UPRISE 2026:** for an innovative approach to AI-assisted hand tremor stabilization
@@ -276,7 +276,6 @@ Lightweight build · balanced weight · comfortable grip · easy operation for s
 | Name | Role |
 |---|---|
 | Deepanshu Gupta | Hardware, firmware, ML, dashboard |
-
 🔗 [LinkedIn](https://www.linkedin.com/in/deepanshu-gupta-64a484378) · [GitHub](https://github.com/deepanshuguptacse2024-create)
 
 ## ⚠️ Disclaimer
