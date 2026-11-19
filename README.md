@@ -1,202 +1,290 @@
-🧠 NeuroGrip – AI-Based Tremor Stabilization System
+<h1 align="center">🧠 NeuroGrip</h1>
 
 <p align="center">
-  <b>AI-Powered Assistive Technology for Hand Tremor Stabilization</b>
-  <br/>
-  Improving Independence Through Intelligent Motion Control
+  <b>AI-Powered Smart Stabilizing Spoon & Tremor Monitoring System</b><br/>
+  Helping people with hand tremors eat, drink and live more independently
 </p>
+
 <p align="center">
-  <img src="https://img.shields.io/badge/Project-NeuroGrip-blue"/>
-  <img src="https://img.shields.io/badge/Technology-AI%20%7C%20IoT-green"/>
-  <img src="https://img.shields.io/badge/Status-Prototype-orange"/>
+  <img src="https://img.shields.io/badge/Status-Prototype-orange?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Platform-ESP32-blue?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/TinyML-Edge%20Impulse-green?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Cloud-Firebase-yellow?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/AI-Gemini-8E75B2?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/UPRISE%202026-2nd%20Place-silver?style=for-the-badge"/>
 </p>
 
-⸻
+<p align="center">
+  <img src="images/neurogrip.png" alt="NeuroGrip prototype" width="620"/>
+</p>
 
-🌟 About the Project
+<p align="center">
+  <a href="https://deepanshuguptacse2024-create.github.io/neurogrip/"><b>🌐 Live Dashboard</b></a>
+</p>
 
-NeuroGrip is an AI-assisted tremor stabilization platform designed to help individuals suffering from hand tremors, particularly people with Parkinson’s disease.
+---
 
-The system uses an MPU6050 motion sensor to detect involuntary hand movements and a dual-servo stabilization mechanism controlled through PID logic to counteract unwanted movements.
+## 📑 Table of Contents
 
-NeuroGrip aims to make daily activities, especially eating, easier and more comfortable through intelligent assistive technology.
+- [About](#-about-the-project)
+- [Problem Statement](#-problem-statement)
+- [Key Features](#-key-features)
+- [How It Works](#-how-it-works)
+- [Methodology](#-methodology)
+- [System Architecture](#️-system-architecture)
+- [Inner Structure & Gimbal](#-inner-structure--gimbal-mechanism)
+- [Data Flow](#-data-flow)
+- [Hardware & Wiring](#-hardware--wiring)
+- [Live Dashboard](#-live-dashboard)
+- [Tech Stack](#-technology-stack)
+- [Getting Started](#-getting-started)
+- [Design & Ergonomics](#️-design--ergonomics)
+- [Future Scope](#-future-scope)
+- [Achievements](#-achievements)
+- [Team](#-team)
 
-🎯 Problem Statement
+---
 
-People experiencing hand tremors often face difficulties performing everyday activities such as eating, holding utensils, and maintaining hand stability.
+## 📖 About the Project
 
-NeuroGrip aims to address these challenges through an affordable, sensor-based stabilization solution.
+NeuroGrip is an AI-powered smart stabilization device that helps people with hand tremors, particularly **Parkinson's disease** patients, perform daily activities independently.
 
-✨ Key Features
+An **MPU6050** accelerometer + gyroscope senses involuntary hand movement. An **ESP32** processes the signal (with on-device **TinyML** tremor detection) and drives a **2-axis servo gimbal** that moves opposite to the tremor, keeping the spoon level. Every session is streamed to **Firebase**, shown on a live web dashboard, and summarized by **Gemini AI** into a report doctors can read.
 
-* Real-time hand tremor detection.
-* MPU6050 motion sensor integration.
-* Dual-servo motor stabilization mechanism.
-* PID-based movement correction.
-* ESP-based microcontroller integration.
-* Firebase Realtime Database integration.
-* Live tremor monitoring dashboard.
-* Tremor intensity visualization.
-* Stability score monitoring.
-* 30-second calibration mechanism.
-* AI-assisted doctor report generation.
+> 🏁 Built for **Smart India Hackathon 2026** · Theme: HealthTech · Category: Hardware / Software · Team **TechNova**
 
-🔧 Hardware Components
+## 🎯 Problem Statement
 
-Component	Purpose
-ESP Microcontroller	Main processing and control
-MPU6050	Motion and orientation sensing
-2 Servo Motors	Stabilization mechanism
-Battery	Power supply
-Connecting Wires	Hardware connections
-Mechanical Structure	Device body and support
+People with hand tremors struggle with everyday tasks like eating, drinking and holding objects. Spilled food, loss of confidence and dependence on caregivers are common. Existing stabilizing devices are expensive, and almost none give patients or doctors usable tremor data.
 
-💻 Technology Stack
+**NeuroGrip** offers an affordable, sensor-based stabilizer with built-in tremor monitoring and AI reporting.
 
-* Embedded C/C++
-* Arduino IDE
-* HTML5
-* CSS3
-* JavaScript
-* Firebase Realtime Database
-* Chart.js
-* Gemini API
-* jsPDF
+## ✨ Key Features
 
-⚙️ Working Principle
+| | Feature | Description |
+|---|---|---|
+| 🎯 | **Real-time tremor detection** | MPU6050 senses 4–12 Hz tremor; TinyML (Edge Impulse) detects it at ~92.4% accuracy |
+| ⚙️ | **Active tremor compensation** | Dual micro servos generate counter-movement to stabilize the spoon |
+| 🧮 | **PID-based correction** | Control loop runs in 50 ms or less on the ESP32 |
+| ☁️ | **Cloud sync** | Sensor data pushed to Firebase Realtime Database |
+| 📈 | **Live monitoring website** | Real-time tremor waveform, intensity and stability index |
+| 🩺 | **AI doctor reports** | Gemini generates a PDF report (mild / moderate / severe) after each session |
+| 🕐 | **Calibration** | 30-second calibration routine before use |
+| 💰 | **Affordable** | Low-cost alternative to expensive assistive devices |
 
-1. Motion Detection: MPU6050 detects hand movement and tremors.
-2. Data Processing: ESP microcontroller processes sensor readings.
-3. PID Control: The algorithm calculates corrective movement.
-4. Stabilization: Servo motors adjust their positions to counteract unwanted motion.
-5. Cloud Monitoring: Sensor data is transmitted to Firebase.
-6. Dashboard: The web interface visualizes tremor activity and stability information.
-7. Reporting: AI-assisted reporting summarizes recorded information.
+## 🔁 How It Works
 
-🔄 System Architecture & Workflow
+<p align="center">
+  <img src="images/how-it-works.jpg" alt="How NeuroGrip works" width="850"/>
+</p>
 
+1. **Hand trembles or shakes**
+2. **MPU6050 detects** the movement (tilt / angle)
+3. **ESP32 processes** the data and calculates the offset angle
+4. **Servo motors rotate** the spoon in the opposite direction to keep it level
+5. **Spoon stays stable and level**, preventing food from spilling
+
+## 🧪 Methodology
+
+<p align="center">
+  <img src="images/methodology-1-sense-process-correct.jpg" alt="Sense, Process, Correct" width="850"/>
+</p>
+
+<p align="center">
+  <img src="images/methodology-2-loop-transmit-report.jpg" alt="Loop, Transmit and monitor, Analyze and report" width="850"/>
+</p>
+
+| Step | Stage | What happens |
+|:---:|---|---|
+| 1 | **Sense** | MPU6050 gyroscope + accelerometer senses 4–12 Hz hand tremor at 100 readings per second |
+| 2 | **Process** | ESP32 runs the PID algorithm in 50 ms or less to compute the counter angle |
+| 3 | **Correct** | Two servo motors apply counter-torque in real time to hold the spoon steady |
+| 4 | **Loop** | Steps 1–3 repeat continuously, correction adapts as the tremor changes |
+| 5 | **Transmit & monitor** | ESP32 sends data over Wi-Fi to the dashboard to show the live tremor waveform |
+| 6 | **Analyze & report** | Gemini AI generates a PDF report of tremor severity after each session |
+
+## 🏗️ System Architecture
+
+<p align="center">
+  <img src="images/prototype-working.png" alt="NeuroGrip system architecture" width="900"/>
+</p>
+
+```mermaid
 flowchart TD
-    A[Hand Movement / Tremor] --> B[MPU6050 Sensor]
-    B --> C[ESP Microcontroller]
-    C --> D[PID Control Algorithm]
-    D --> E[Dual Servo Motors]
-    E --> F[Stabilized Spoon / Hand Support]
-    C --> G[Firebase Realtime Database]
-    G --> H[Web Dashboard]
-    H --> I[Tremor Graphs]
-    H --> J[Stability Score]
-    H --> K[AI-Assisted Reports]
+    A["Hand Movement / Tremor"] --> B["MPU6050 Sensor"]
+    B --> C["ESP32 Microcontroller"]
+    C --> D["PID Control Algorithm"]
+    D --> E["Dual Servo Motors"]
+    E --> F["Stabilized Spoon"]
+    C --> G["Firebase Realtime Database"]
+    G --> H["Web Dashboard"]
+    H --> I["Tremor Graphs"]
+    H --> J["Stability Score"]
+    H --> K["Gemini AI Reports"]
+```
 
-⚖️ Device Weight & Ergonomic Design
+<p align="center">
+  <img src="images/hardware-layers.jpg" alt="Hardware, control and AI/cloud layers" width="800"/>
+</p>
+
+## 🔩 Inner Structure & Gimbal Mechanism
+
+<p align="center">
+  <img src="images/inner-structure.jpg" alt="Inner structure, side cross-section" width="850"/>
+</p>
+
+<p align="center">
+  <img src="images/gimbal-mechanism.jpg" alt="2-axis gimbal mechanism" width="750"/>
+</p>
+
+| Axis | Servo | Motion |
+|---|---|---|
+| **Pitch** | Servo Motor 2 | Forward and backward tilt (up–down) |
+| **Roll** | Servo Motor 1 | Left and right tilt |
+
+Both axes work together to keep the spoon bowl **always horizontal**.
+
+## 🔀 Data Flow
+
+<p align="center">
+  <img src="images/data-flow.jpg" alt="NeuroGrip data flow" width="900"/>
+</p>
+
+`MPU6050 (sensor data)` → `ESP32 (processing)` → `Wi-Fi (data transfer)` → `React dashboard (live monitoring)` → `Gemini AI (analysis & report)` → `Doctor (medical insights)`
+
+## 🔌 Hardware & Wiring
+
+### Components Used
+
+| No. | Component | Specification | Qty |
+|:---:|---|---|:---:|
+| 1 | Spoon head | Stainless steel | 1 |
+| 2 | Gimbal mechanism | 2-axis (pitch & roll) | 1 |
+| 3 | Servo motors | Micro servo (SG90) | 2 |
+| 4 | IMU sensor | MPU6050 | 1 |
+| 5 | Microcontroller | ESP32 dev board | 1 |
+| 6 | Battery | 3.7V Li-ion (18650) | 1 |
+| 7 | Power switch | On/Off switch | 1 |
+| 8 | Handle (body) | ABS plastic (ergonomic) | 1 |
+| 9 | Wires & connectors | Jumper wires | Many |
+
+### Wiring Diagram
+
+<p align="center">
+  <img src="images/wiring-diagram.png" alt="NeuroGrip wiring diagram" width="850"/>
+</p>
+
+| From | To (ESP32) |
+|---|---|
+| MPU6050 VCC / GND | 3V3 / GND |
+| MPU6050 SDA / SCL | GPIO21 / GPIO22 |
+| Servo 1 signal | GPIO18 |
+| Servo 2 signal | GPIO19 |
+| Servo VCC | Battery (+) |
+| All GND | Common ground |
+
+> Pin numbers should match the firmware in the `arduino` folder.
+
+## 📊 Live Dashboard
+
+<p align="center">
+  <img src="images/dashboard1.png" alt="Live monitoring dashboard" width="48%"/>
+  <img src="images/dashboard2.png" alt="Gemini AI doctor report" width="48%"/>
+</p>
+
+- Live tremor waveform and tremor intensity
+- Stability index and tremor activity history
+- Gemini AI doctor report with PDF export
+
+👉 **[Open the live dashboard](https://deepanshuguptacse2024-create.github.io/neurogrip/)**
+
+## 💻 Technology Stack
+
+| Layer | Tools |
+|---|---|
+| Firmware | Embedded C/C++, Arduino IDE |
+| Machine learning | TinyML, Edge Impulse |
+| Frontend | HTML5, CSS3, JavaScript, Chart.js |
+| Cloud | Firebase Realtime Database |
+| AI reporting | Gemini API, jsPDF |
+| Hosting | GitHub Pages |
+
+## 🚀 Getting Started
+
+```bash
+git clone https://github.com/deepanshuguptacse2024-create/neurogrip.git
+cd neurogrip
+```
+
+1. Open the firmware from the `arduino` folder in **Arduino IDE** and select your ESP32 board.
+2. Add your Wi-Fi and Firebase details in the firmware.
+3. Upload to the ESP32 and switch the device on.
+4. Wait for the 30-second calibration, then open the [live dashboard](https://deepanshuguptacse2024-create.github.io/neurogrip/).
+
+> 🔒 Never commit real API keys or passwords to a public repository.
+
+```
+neurogrip/
+├── arduino/        # ESP32 firmware
+├── app/            # Web dashboard source
+├── images/         # Photos, diagrams, screenshots
+├── index.html      # Dashboard entry page
+└── README.md
+```
+
+## ⚖️ Design & Ergonomics
 
 NeuroGrip is being developed in two configurations:
 
-1. Hand-held Stabilizing Spoon: Designed to assist users during eating.
-2. Wearable Hand Stabilizer: Designed to support hand movement stabilization during everyday activities.
+1. **Hand-held stabilizing spoon:** helps users while eating and drinking.
+2. **Wearable hand stabilizer:** supports hand stability in everyday activities.
 
-Current Prototype Specifications
+| Parameter | Details |
+|---|---|
+| Prototype weight | ~150–200 g |
+| Target users | Adults and senior citizens |
+| Stabilization | Dual-servo, 2-axis gimbal |
+| Prototype status | ~80% complete, testing and validation ongoing |
 
-Parameter	Details
-Prototype Weight	Approximately 150–200 grams
-Device Configurations	Hand-held and wearable
-Target Users	Adults and senior citizens
-Main Application	Hand tremor assistance
-Stabilization	Dual-servo mechanism
+Lightweight build · balanced weight · comfortable grip · easy operation for seniors · future tuning for different hand sizes.
 
-Ergonomic Design Considerations
+> The 150–200 g figure is the reported prototype weight, not a clinically validated recommendation. Senior and pediatric designs need separate ergonomic evaluation and user testing.
 
-* Lightweight and comfortable construction.
-* Easy-to-hold mechanical design.
-* Balanced weight distribution.
-* Comfortable grip for extended use.
-* Easy operation for senior citizens.
-* Future optimization for different hand sizes and strengths.
+## 🔮 Future Scope
 
-Note: The 150–200 g figure is the currently reported prototype weight range, not a clinically validated weight recommendation. Pediatric and senior-user designs require separate ergonomic evaluation and user testing.
+- 📱 Mobile app for tremor tracking, health monitoring and progress analysis
+- 🧠 Better tremor classification with larger datasets
+- 🔋 Battery optimization and a more compact wearable design
+- 🖐️ Ergonomic customization for different hand sizes and strengths
+- 🏥 Extended performance testing and clinical evaluation
 
-📸 Project Gallery
-
-Add your actual project photographs in the images folder.
-
-Image	Description
-neurogrip-device.jpg	Complete NeuroGrip prototype
-hardware-setup.jpg	ESP, MPU6050 and servo setup
-dashboard.png	Live monitoring dashboard
-circuit-diagram.png	Hardware circuit diagram
-
-Example:
-
-![NeuroGrip Device](images/neurogrip-device.jpg)
-![Hardware Setup](images/hardware-setup.jpg)
-![Dashboard](images/dashboard1.png)
-|[Gemini -Ai report](images/dashboard2.png)
-|[Medical-report](images/dashboard3.png)
-
-📊 Dashboard Capabilities
-
-The NeuroGrip dashboard is designed to display:
-
-* Live tremor waveform.
-* Tremor intensity.
-* Stability score.
-* Tremor activity history.
-* AI-assisted doctor reports.
-* Real-time monitoring information.
-
-🌐 Live Project & Repository
-
-Live Website:
-https://deepanshuguptacse2024-create.github.io/neurogrip/
-
-GitHub Repository:
-https://github.com/deepanshuguptacse2024-create/neurogrip
-
-🚀 Future Scope
-
-* Improved tremor classification using machine learning.
-* Advanced motion sensor integration.
-* More accurate stabilization algorithms.
-* Compact and wearable device design.
-* Better battery optimization.
-* Ergonomic customization for different users.
-* Extended performance testing and clinical evaluation.
-
-👥 Project Team
-
-Team Name: TechNova
-
-Project: NeuroGrip – AI-Based Tremor Stabilization System
-
-📌 Project Status
-
-Prototype Development, Integration and Testing.
-
-⚠️ Disclaimer
-
-NeuroGrip is an assistive technology prototype developed for educational and research purposes. It is not a certified medical device and is not intended to diagnose, treat, or cure any medical condition.
-
-🏆 Achievements & Recognition
-
-🥈 2nd Position – UPRISE 2026
-
-NeuroGrip secured 2nd Position at UPRISE 2026 for its innovative approach towards AI-assisted hand tremor stabilization.
-
-This recognition highlights our efforts in developing assistive technology that aims to improve independence and quality of life for individuals experiencing hand tremors.
-
-Project: NeuroGrip – AI-Based Tremor Stabilization System
-Recognition: 2nd Position
-Event: UPRISE 2026
-## 🏆 Achievement
-
-### 🥈 2nd Position – UPRISE 2026
-
-Proud moment for Team NeuroGrip!
-
-Our project secured 2nd Position at UPRISE 2026.
-
-![Team NeuroGrip with Trophy](images/uprise-2026-runner-u.jpg)
-⸻
+## 🏆 Achievements
 
 <p align="center">
-  <b>NeuroGrip – Technology for a Steadier Tomorrow ❤️</b>
+  <img src="images/uprise-2026-runner-u.jpg" alt="Team NeuroGrip with trophy" width="520"/>
+</p>
+
+- 🥈 **2nd Position, UPRISE 2026:** for an innovative approach to AI-assisted hand tremor stabilization
+- 🏅 **Top 10, Trikon 3.0** hackathon at MIET
+- 🎤 Presented at **Microsoft MLSA DevGathering** and **Google Solution Challenge**
+- 🇮🇳 Prepared for **Smart India Hackathon 2026** (HealthTech)
+
+## 👥 Team
+
+**Team TechNova**
+
+| Name | Role |
+|---|---|
+| Deepanshu Gupta | Hardware, firmware, ML, dashboard |
+
+🔗 [LinkedIn](https://www.linkedin.com/in/deepanshu-gupta-64a484378) · [GitHub](https://github.com/deepanshuguptacse2024-create)
+
+## ⚠️ Disclaimer
+
+NeuroGrip is an assistive technology prototype built for educational and research purposes. It is **not** a certified medical device and is not intended to diagnose, treat or cure any medical condition.
+
+---
+
+<p align="center">
+  <b>NeuroGrip: Technology for a Steadier Tomorrow ❤️</b>
 </p>
