@@ -123,7 +123,6 @@ flowchart TD
     H --> K["Gemini AI Reports"]
 ```
 
-
 ## 🔩 Inner Structure & Gimbal Mechanism
 
 <p align="center">
@@ -131,7 +130,7 @@ flowchart TD
 </p>
 
 <p align="center">
-  <img src="gimbal-mechanism.jpg" alt="2-axis gimbal mechanism" width="750"/>
+  <img src="gimbal-mechanism.jpg.jpeg" alt="2-axis gimbal mechanism" width="750"/>
 </p>
 
 | Axis | Servo | Motion |
@@ -168,7 +167,7 @@ Both axes work together to keep the spoon bowl **always horizontal**.
 ### Wiring Diagram
 
 <p align="center">
-  <img src="wiring-diagram.png" alt="NeuroGrip wiring diagram" width="850"/>
+  <img src="wiring-diagram.png.jpeg" alt="NeuroGrip wiring diagram" width="850"/>
 </p>
 
 | From | To (ESP32) |
@@ -186,9 +185,8 @@ Both axes work together to keep the spoon bowl **always horizontal**.
 
 <p align="center">
   <img src="dashboard.png" alt="Live monitoring dashboard" width="48%"/>
-  <img src="dashboard1.png" alt="Gemini AI doctor report" width="48%"/>
-  <img src="dashboard2.png" alt="Medical Clinic report" width="48%"/>
-  
+  <img src="dashboard1.png" alt="Gemini AI Doctor Report" width="48%"/>
+  <img src="dashboard2.png" alt="Medical Clinic Report" width="48%"/>
   
 </p>
 
@@ -276,6 +274,8 @@ Lightweight build · balanced weight · comfortable grip · easy operation for s
 | Name | Role |
 |---|---|
 | Deepanshu Gupta | Hardware, firmware, ML, dashboard |
+
+
 🔗 [LinkedIn](https://www.linkedin.com/in/deepanshu-gupta-64a484378) · [GitHub](https://github.com/deepanshuguptacse2024-create)
 
 ## ⚠️ Disclaimer
