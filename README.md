@@ -185,8 +185,11 @@ Both axes work together to keep the spoon bowl **always horizontal**.
 ## 📊 Live Dashboard
 
 <p align="center">
-  <img src="dashboard1.png" alt="Live monitoring dashboard" width="48%"/>
-  <img src="dashboard2.png" alt="Gemini AI doctor report" width="48%"/>
+  <img src="dashboard.png" alt="Live monitoring dashboard" width="48%"/>
+  <img src="dashboard1.png" alt="Gemini AI doctor report" width="48%"/>
+  <img src="dashboard2.png" alt="Medical Clinic report" width="48%"/>
+  
+  
 </p>
 
 - Live tremor waveform and tremor intensity
