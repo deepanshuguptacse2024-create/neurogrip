@@ -123,9 +123,6 @@ flowchart TD
     H --> K["Gemini AI Reports"]
 ```
 
-<p align="center">
-  <img src="hardware-layers.jpg" alt="Hardware, control and AI/cloud layers" width="800"/>
-</p>
 
 ## 🔩 Inner Structure & Gimbal Mechanism
 
